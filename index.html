@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Architecture NK — Elegant • Gold & White</title>
+  <style>
+    :root{
+      --gold:#D4AF37;
+      --gold-deep:#C9972B;
+      --white:#FFFFFF;
+      --muted:#F6F5F3;
+      --text:#222;
+      --card-shadow: 0 8px 24px rgba(13,13,13,0.08);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background: linear-gradient(180deg,var(--muted), #fff 40%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:20px 32px;background:linear-gradient(90deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04));
+    }
+    .logo{display:flex;gap:12px;align-items:center}
+    .mark{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:20px;box-shadow: 0 6px 18px rgba(201,148,43,0.28)}
+    nav a{margin-left:18px;color:var(--text);text-decoration:none;font-weight:600;transition:color 0.3s}
+    nav a:hover{color:var(--gold)}
+    .hero{
+      max-width:1100px;margin:28px auto;padding:36px;border-radius:14px;background:rgba(255,255,255,0.95);box-shadow:var(--card-shadow);display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center
+    }
+    .hero .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--gold);color:var(--white);font-weight:700;font-size:12px}
+    .hero h2{font-size:34px;margin:12px 0}
+    .lead{color:#444;margin-bottom:18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:10px;border:none;cursor:pointer;font-weight:700;transition:all 0.3s}
+    .btn-primary{background:var(--gold);color:var(--white);box-shadow:0 8px 20px rgba(212,175,55,0.18)}
+    .btn-primary:hover{background:var(--gold-deep)}
+    .btn-ghost{background:transparent;border:2px solid rgba(34,34,34,0.1)}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+    .features{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .feature{background:var(--white);padding:12px;border-radius:10px;flex:1;box-shadow:0 6px 18px rgba(15,15,15,0.04);min-width:150px}
+
+    /* Gallery */
+    .gallery-wrap{padding:36px 18px;max-width:1100px;margin:18px auto}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:var(--card-shadow);cursor:pointer;transition:transform 0.3s}
+    .card:hover{transform:translateY(-4px)}
+    .card img{display:block;width:100%;height:220px;object-fit:cover}
+    .card .meta{padding:12px}
+
+    /* About */
+    .about{max-width:1100px;margin:36px auto;padding:28px;background:linear-gradient(90deg, rgba(212,175,55,0.04), rgba(212,175,55,0.02));border-radius:12px}
+
+    footer{padding:28px 18px;text-align:center;color:#666;font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+    }
+    @media (max-width:560px){
+      header{padding:14px}
+      .mark{width:44px;height:44px;font-size:16px}
+      .hero h2{font-size:26px}
+    }
+
+    /* Lightbox modal */
+    .lightbox{position:fixed;inset:0;background:rgba(8,8,8,0.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:999}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:95%;max-height:90%;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+    .close-x{position:absolute;top:18px;right:18px;background:var(--white);border-radius:999px;padding:8px;cursor:pointer;font-weight:700;line-height:1}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="mark">NK</div>
+      <div>
+        <div style="font-weight:700">Architecture NK</div>
+        <div style="font-size:12px;color:#666">Design • Build • Inspire</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" role="region" aria-label="Introduction">
+      <div>
+        <span class="eyebrow">Featured</span>
+        <h2>Elegant residential & commercial architecture in gold & white</h2>
+        <p class="lead">We create warm, luminous spaces that blend classic proportion with modern materials. View a curated selection of our latest projects below.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Quote</button>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div style="font-weight:700">Full-service</div>
+            <div style="font-size:13px;color:#666">From concept to construction admin.</div>
+          </div>
+          <div class="feature">
+            <div style="font-weight:700">Sustainable</div>
+            <div style="font-size:13px;color:#666">Passive strategies and material care.</div>
+          </div>
+          <div class="feature">
+            <div style="font-weight:700">Award-winning</div>
+            <div style="font-size:13px;color:#666">Regional & international recognition.</div>
+          </div>
+        </div>
+      </div>
+
+      <aside style="text-align:center">
+        <div style="border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow)">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop" alt="Architectural interior with gold accents" style="width:100%;max-width:420px;height:auto;display:block">
+        </div>
+        <div style="margin-top:12px;color:#666;font-size:13px">Signature—Residential Interior</div>
+      </aside>
+    </section>
+
+    <section id="projects" class="gallery-wrap">
+      <h3 style="margin-bottom:12px">Selected Projects</h3>
+      <div class="gallery-grid">
+        <div class="card" onclick="openLightbox(0)">
+          <img src="https://images.unsplash.com/photo-1501696461209-082f8f6d5f6b?q=80&w=1200&auto=format&fit=crop" alt="Modern facade with gold metalwork">
+          <div class="meta"><div style="font-weight:700">Golden Facade</div><div style="font-size:13px;color:#666">Urban commercial exterior.</div></div>
+        </div>
+
+        <div class="card" onclick="openLightbox(1)">
+          <img src="https://images.unsplash.com/photo-1505691723518-36a40f1f3b5b?q=80&w=1200&auto=format&fit=crop" alt="Minimal living room with gold lamp">
+          <div class="meta"><div style="font-weight:700">Luminous Living</div><div style="font-size:13px;color:#666">Residential interior concept.</div></div>
+        </div>
+
+        <div class="card" onclick="openLightbox(2)">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop" alt="White pavilion volume with delicate gold trims">
+          <div class="meta"><div style="font-weight:700">White Pavilion</div><div style="font-size:13px;color:#666">Public pavilion proposal.</div></div>
+        </div>
+
+        <div class="card" onclick="openLightbox(3)">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop" alt="Facade with warm gold lighting at dusk">
+          <div class="meta"><div style="font-weight:700">Evening Glow</div><div style="font-size:13px;color:#666">Facade lighting study.</div></div>
+        </div>
+
+        <div class="card" onclick="openLightbox(4)">
+          <img src="https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?q=80&w=1200&auto=format&fit=crop" alt="Dining space with gold pendant lights">
+          <div class="meta"><div style="font-weight:700">Dining Detail</div><div style="font-size:13px;color:#666">Bespoke fixtures & joinery.</div></div>
+        </div>
+
+        <div class="card" onclick="openLightbox(5)">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="Staircase and skylight with white walls">
+          <div class="meta"><div style="font-weight:700">Light Stair</div><div style="font-size:13px;color:#666">Daylight strategy.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h3 style="margin-top:0">About Architecture NK</h3>
+      <p style="max-width:900px">Architecture NK is a studio focused on material tactility, careful daylighting, and a warm palette where gold accents meet generous white volumes. We offer architectural design, interior design, and construction documentation. We're based in India and work nationally and internationally.</p>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <strong>Contact</strong>
+          <div id="contact" style="font-size:13px;color:#444">Email: hello@architecturenk.example</div>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <strong>Services</strong>
+          <div style="font-size:13px;color:#444">Residential design • Commercial • Interiors • Consultancy</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Architecture NK — Crafted with care.
+  </footer>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <div class="close-x" onclick="closeLightbox()">✕</div>
+    <img id="lightboxImg" src="" alt="Project image">
+  </div>
+
+  <script>
+    const imgs = [
+      'https://images.unsplash.com/photo-1501696461209-082f8f6d5f6b?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1505691723518-36a40f1f3b5b?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop'
+    ];
+
+    function openLightbox(i){
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = imgs[i];
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = '';
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+    }
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
